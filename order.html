@@ -58,8 +58,8 @@
                     <div class="form-group">
                         <select name="crust-choice" id="crust-choice" class="form-control pizza-updater">
                             <option disabled selected>Select a crust...</option>
-                            <option value="thin">Thin</option>
-                            <option value="deep">Deep Dish</option>
+                            <option value="thin" data-price="0" class="display-price">Thin</option>
+                            <option value="deep" data-price="2.50" class="display-price">Deep Dish</option>
                         </select>
                     </div>
                 </section>
@@ -86,9 +86,9 @@
                     <div class="form-group">
                         <select name="pizza-size" id="pizza-size" class="form-control pizza-updater">
                             <option disabled selected>Select a size...</option>
-                            <option value="sm">Small</option>
-                            <option value="md">Medium</option>
-                            <option value="lg">Large</option>
+                            <option value="sm" data-price="15.00" class="display-price">Small</option>
+                            <option value="md" data-price="18.00" class="display-price">Medium</option>
+                            <option value="lg" data-price="20.00" class="display-price">Large</option>
                         </select>
                     </div>
                 </section>
@@ -97,81 +97,81 @@
 
 
             <div class="row">
-                <section class="col-md-4 hidden toppings-container" id="toppings-meat-container">
+                <section class="col-md-4 hidden toppings-container" id="toppings-meat-container" data-price="1.25">
                     <h2>Choose your meat toppings</h2>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="toppings[]" value="pepperoni" data-pizza-field-name="toppingsMeat" class="form-check-input pizza-updater"> Pepperoni
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="sausage" class="form-check-input pizza-updater"> Sausage
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="bacon" class="form-check-input pizza-updater"> Bacon
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" name="topping[]" value="chicken" class="form-check-input pizza-updater"> Chicken
+                        <label class="form-check-label display-price">
+                            <input type="checkbox" name="topping[]" value="chicken" class="form-check-input pizza-updater" data-price="2.00"> Chicken
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" name="topping[]" value="meat-lover" class="form-check-input pizza-updater"> Combo (Meat Lover's)
+                        <label class="form-check-label display-price">
+                            <input type="checkbox" name="topping[]" value="meat-lover" class="form-check-input pizza-updater" data-price="2.25"> Combo (Meat Lover's)
                         </label>
                     </div>
                 </section>
 
-                <section class="col-md-4 offset-md-2 hidden toppings-container" id="toppings-other-container">
+                <section class="col-md-4 offset-md-2 hidden toppings-container" id="toppings-other-container" data-price="0.75">
                     <h2>Choose your other toppings</h2>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="peppers-banana" class="form-check-input pizza-updater"> Banana Peppers
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="spinach" class="form-check-input pizza-updater"> Spinach
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="olives-black" class="form-check-input pizza-updater"> Black Olives
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="olives-green" class="form-check-input pizza-updater"> Green Olives
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" name="topping[]" value="mushrooms" class="form-check-input pizza-updater"> Mushrooms
+                        <label class="form-check-label display-price">
+                            <input type="checkbox" name="topping[]" value="mushrooms" class="form-check-input pizza-updater" data-price="1.00"> Mushrooms
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="onions" class="form-check-input pizza-updater"> Onions
                         </label>
                     </div>
 
                     <div class="form-check">
-                        <label class="form-check-label">
+                        <label class="form-check-label display-price">
                             <input type="checkbox" name="topping[]" value="peppers-green" class="form-check-input pizza-updater"> Green Peppers
                         </label>
                     </div>

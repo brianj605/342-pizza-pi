@@ -1,36 +1,58 @@
 "use strict";
 
-// function toggleField(elementId) {
-//     $("#" + elementId).removeClass("hidden");
-
-    // let ele = window.document.getElementById(elementId);
-    // ele.style.display = "block !important;";
-
-// }
-
-// document.getElementById("crust-choice")
-//     .addEventListener('change', function(){
-//         console.log(document.getElementById("pizza-size-container"));
-//     });
 
 $(document).ready(function($){
-    let pizzaOrder = getOrder();
+	
+	let pizzaOrder = getOrder();
 
 
+	$("#crust-choice").on("change", function(e){
+		$("#pizza-size-container").removeClass("hidden");
+	});
 
-    $("#crust-choice").on("change", function(e){
-        $("#pizza-size-container").removeClass("hidden");
-    });
+	$("#pizza-size").on("change", function(e){
+		$(".toppings-container").removeClass("hidden");
+	});
 
-    $("#pizza-size").on("change", function(e){
-        $(".toppings-container").removeClass("hidden");
-    });
+	$(".pizza-updater").on("change", function(e){
+		let fieldName = $(this).attr('name');
+		pizzaOrder[fieldName] = $(this).val();
 
-    $(".pizza-updater").on("change", function(e){
-        let fieldName = $(this).attr('name');
-        pizzaOrder[fieldName] = $(this).val();
-        saveOrder(pizzaOrder);
-    });
+
+		let totalPrice = getTotalPrice();
+
+		console.log('total: ', totalPrice);
+
+		saveOrder(pizzaOrder);
+	});
+
+    
+	// Display prices based on data-price
+	$('label.display-price input, option.display-price').each(function(i,v) {
+
+		let ele = $(v);
+		let itemPrice = ele.closest('[data-price]').data('price');
+
+		if (itemPrice == 0) {
+			itemPrice = 'no additional charge'
+		} else {
+			itemPrice = '$' + itemPrice;
+		}
+
+		ele.closest('.display-price').append(' (' + itemPrice + ')');
+	})
+	
+	function getTotalPrice() {
+		let totalPrice = 0;
+	
+		$(':selected, :checked').not('[disabled]').each(function(i,v) {
+			let itemPrice = parseFloat($(v).closest('[data-price]').data('price'));
+			totalPrice += itemPrice;
+			console.log(i,itemPrice, v);
+		});
+		
+		return totalPrice;
+	}
 });
 
 function createOrder() {
@@ -51,80 +73,6 @@ function getOrder() {
         ? JSON.parse(localStorage['pizza_order'])
         : createOrder();
 }
-
-// function sayHello() {
-//     alert("Hello!");
-// }
-//
-// sayHello();
-
-// let sayHello = function(name) {
-//     alert("hello " + name);
-// };
-//
-// sayHello(sayHello);
-
-// let sum = (a, b) => {return a + b;}
-
-
-// let donnaAge = 23;
-// let donnaName = "Donna";
-// let favColor = "brown";
-//
-// let donna = {
-//     age: 23,
-//     name: "Donna",
-//     favColor: "brown",
-// };
-//
-// console.log(donna);
-//
-//
-// let i;
-// for (i = 0; i < 10; i++) {
-//
-//     console.log("i is : " + i);
-// }
-// console.log("Done iteration, i is: " + i);
-
-//
-// let obj1 = {};
-// let obj2 = {};
-// let obj3 = {};
-// let obj4 = {};
-// let obj5 = {};
-//
-// let myObjects = [
-//     28,
-//     13,
-//     "hello",
-//     'c',
-//     12.3,
-//     -18,
-//     {
-//         age: 23,
-//         name: "Donna",
-//         favColor: "brown"
-//     }
-// ];
-//
-
-// let donna = {
-//     name: "Donna",
-//     favSongGenre: 'jazz'
-// };
-
-// localStorage['donna'] = JSON.stringify(donna);
-//
-//
-// let elly = JSON.parse(localStorage['donna']);
-//
-// elly.name = "Elly";
-// console.log(elly);
-
-
-
-
 
 
 
