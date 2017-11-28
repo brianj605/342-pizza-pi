@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
     <!--meta charset="utf-8"-->
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -35,6 +36,10 @@
         </ul>
 
     </div>
+    <div class="collapse navbar-collapse navbar-brand" style="float: right;">
+        Total:<span id="total-price" style="padding-left: 8px;"></span>
+        <input type="button" id="clear-order" value="Clear Order"/>
+    </div>
 </nav>
 
 <main role="main">
@@ -57,7 +62,7 @@
 
                     <div class="form-group">
                         <select name="crust-choice" id="crust-choice" class="form-control pizza-updater">
-                            <option disabled selected>Select a crust...</option>
+                            <option value="" disabled selected>Select a crust...</option>
                             <option value="thin" data-price="0" class="display-price">Thin</option>
                             <option value="deep" data-price="2.50" class="display-price">Deep Dish</option>
                         </select>
@@ -66,7 +71,7 @@
 
                 <section class="col-md-4 offset-md-2 hidden" id="pizza-size-container">
                     <h2>Choose your size</h2>
-
+					<div id="size-alert-holder"></div>
                     <!--div class="form-group">
                         <label>
                             <input type="radio" name="pizza-size" value="sm"> Small
@@ -85,7 +90,7 @@
 
                     <div class="form-group">
                         <select name="pizza-size" id="pizza-size" class="form-control pizza-updater">
-                            <option disabled selected>Select a size...</option>
+                            <option value="" disabled selected>Select a size...</option>
                             <option value="sm" data-price="15.00" class="display-price">Small</option>
                             <option value="md" data-price="18.00" class="display-price">Medium</option>
                             <option value="lg" data-price="20.00" class="display-price">Large</option>
@@ -102,7 +107,7 @@
 
                     <div class="form-check">
                         <label class="form-check-label display-price">
-                            <input type="checkbox" name="toppings[]" value="pepperoni" data-pizza-field-name="toppingsMeat" class="form-check-input pizza-updater"> Pepperoni
+                            <input type="checkbox" name="topping[]" value="pepperoni" data-pizza-field-name="toppingsMeat" class="form-check-input pizza-updater"> Pepperoni
                         </label>
                     </div>
 
@@ -190,6 +195,15 @@
     <p>&copy; Company 2017</p>
 </footer>
 
+
+<div id="size-alert" style="display: none;">
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		<span aria-hidden="true">&times;</span>
+	  </button>
+	  Because of your crust selection, your size has been increased to medium
+	</div>
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
